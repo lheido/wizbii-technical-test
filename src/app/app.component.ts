@@ -15,7 +15,7 @@ export class AppComponent implements OnDestroy {
 
   constructor(private authService: AuthService) {
     this.authSubscriber = this.authService.doLogin().subscribe((account: Account) => {
-      this.account = account;
+      this.account = this.authService.account;
     });
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '@environments/environment';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 export interface Profile {
   _id: string;
@@ -40,7 +40,12 @@ export interface Account {
 })
 export class AuthService {
 
+  private auth$: Subject<Account>;
+
+  public account: Account;
+
   constructor(private httpClient: HttpClient) {
+    this.auth$ = new Subject();
   }
 
   doLogin() {
@@ -51,10 +56,14 @@ export class AuthService {
       body.set('client_id', environment.credentials.client_id);
       body.set('grant_type', environment.credentials.grant_type);
     }
-    return this.httpClient.post<Account>(`${environment.apiBase}/v1/account/validate`, body.toString(), {
+    this.httpClient.post<Account>(`${environment.apiBase}/v1/account/validate`, body.toString(), {
       headers: new HttpHeaders({
         'Content-type': 'application/x-www-form-urlencoded'
       })
+    }).subscribe((account: Account) => {
+      this.account = account;
+      this.auth$.next(account);
     });
+    return this.auth$.asObservable();
   }
 }

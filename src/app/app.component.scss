@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  margin: 32px;
+
+  @media screen and (min-width: 1024px) {
+    margin: 32px 20% 32px;
+  }
+}
