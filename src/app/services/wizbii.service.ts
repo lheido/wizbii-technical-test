@@ -35,6 +35,12 @@ export class WizbiiService {
     this.feedItems = new Map<string, FeedItem>();
   }
 
+  /**
+   * Make a post request to get the newest (by default) feed items.
+   *
+   * Populate the feed items map property at the same time.
+   * Use the getFeedItem() method after a getDashboard call to retrieve the complet feed item objects.
+   */
   getDashboard(direction = 'newest') {
     this.httpClient.post<Dashboard>(`${environment.apiBase}/v2/dashboard/`, {}, {
       params: new HttpParams().set('direction', direction),
@@ -55,7 +61,10 @@ export class WizbiiService {
     return this.dashboard$.asObservable();
   }
 
-  getFeedItem(id): FeedItem | null {
+  /**
+   * Get a complet feed item object.
+   */
+  getFeedItem(id: string): FeedItem | null {
     if (this.feedItems.has(id)) {
       return this.feedItems.get(id);
     }

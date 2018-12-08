@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.feedItems = [];
     this.dashboardSubscriber = this.wizbiiService.getDashboard().subscribe((dashboard: Dashboard) => {
+      // Use display_recipe to display feed items in the order given by the back-end.
       this.feedItems = dashboard.display_recipe.feed_item_proxies || [];
     });
   }

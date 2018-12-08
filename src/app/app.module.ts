@@ -8,6 +8,7 @@ import { AccountComponent } from '@components/account/account.component';
 import { FeedItemComponent } from '@components/feed-item/feed-item.component';
 import { DashboardComponent } from '@components/dashboard/dashboard.component';
 import { PublicationComponent } from '@components/feed-item/publication/publication.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PublicationComponent } from '@components/feed-item/publication/publicat
     AccountComponent,
     FeedItemComponent,
     DashboardComponent,
-    PublicationComponent
+    PublicationComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

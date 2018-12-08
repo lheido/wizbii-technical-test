@@ -1,3 +1,4 @@
+<wizbii-loader *ngIf="!feedItems.length"></wizbii-loader>
 <div class="dashboard" [@listAnimation]="feedItems.length">
   <wizbii-feed-item *ngFor="let feedItem of feedItems" [feedItemId]="feedItem.id"></wizbii-feed-item>
 </div>

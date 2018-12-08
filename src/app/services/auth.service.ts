@@ -48,6 +48,9 @@ export class AuthService {
     this.auth$ = new Subject();
   }
 
+  /**
+   * Make a login request using credentials (dev server only) or user inputs.
+   */
   doLogin() {
     const body = new URLSearchParams();
     if (environment.credentials) {
@@ -55,6 +58,8 @@ export class AuthService {
       body.set('password', environment.credentials.password);
       body.set('client_id', environment.credentials.client_id);
       body.set('grant_type', environment.credentials.grant_type);
+    } else {
+      // TODO: take into account user inputs.
     }
     this.httpClient.post<Account>(`${environment.apiBase}/v1/account/validate`, body.toString(), {
       headers: new HttpHeaders({

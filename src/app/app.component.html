@@ -1,4 +1,7 @@
-<ng-container *ngIf="account">
+<ng-container *ngIf="account; else elseLoader">
   <wizbii-account></wizbii-account>
   <wizbii-dashboard></wizbii-dashboard>
 </ng-container>
+<ng-template #elseLoader>
+  <wizbii-loader></wizbii-loader>
+</ng-template>
