@@ -5,11 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AccountComponent } from '@components/account/account.component';
+import { FeedItemComponent } from '@components/feed-item/feed-item.component';
+import { DashboardComponent } from '@components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccountComponent
+    AccountComponent,
+    FeedItemComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

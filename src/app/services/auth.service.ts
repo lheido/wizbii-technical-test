@@ -30,7 +30,7 @@ export interface User {
 }
 
 export interface Account {
-  access_token: string;
+  'access-token': string;
   profile: Profile;
   user: User;
 }
