@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { AccountComponent } from '@components/account/account.component';
 import { FeedItemComponent } from '@components/feed-item/feed-item.component';
 import { DashboardComponent } from '@components/dashboard/dashboard.component';
+import { PublicationComponent } from '@components/feed-item/publication/publication.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
     FeedItemComponent,
-    DashboardComponent
+    DashboardComponent,
+    PublicationComponent
   ],
   imports: [
     BrowserModule,

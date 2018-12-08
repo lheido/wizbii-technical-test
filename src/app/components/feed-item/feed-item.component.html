@@ -1,3 +1,9 @@
 <div class="card" @enterAnimation>
-  <p>Work in progress</p>
+  <wizbii-publication *ngIf="feedItem && feedItem.type == 'publication'; else elseContent"
+                      [feedItem]="feedItem"></wizbii-publication>
+  <ng-template #elseContent>
+    <div class="card-row">
+      <p>Work in progress</p>
+    </div>
+  </ng-template>
 </div>

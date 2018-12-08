@@ -1,0 +1,33 @@
+<section class="publication">
+  <div class="card-row" *ngIf="feedItem.publication.poster.displayName">
+    <div class="poster">
+      <div class="poster-images"></div>
+      <div class="poster-content">
+        <div class="poster-content-row">
+          <span class="display-name">{{ feedItem.publication.poster.displayName }}</span>
+          <!-- TODO: try the ngx-timeago package. -->
+          <span class="date"> - {{ feedItem.publication.date_created | date:'shortDate' }}</span>
+        </div>
+        <div class="poster-content-row">
+          <span>{{ feedItem.publication.poster.slug }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-row small" *ngIf="feedItem.publication.tags.length">
+    <ul class="tags">
+      <li class="tag" *ngFor="let tag of feedItem.publication.tags">#{{ tag.name }}</li>
+    </ul>
+  </div>
+  <div class="card-row" *ngIf="feedItem.publication.content">
+    <div class="content" [innerHTML]="feedItem.publication.content"></div>
+  </div>
+  <div class="card-row full-width" *ngIf="feedItem.publication.attachment_picture">
+    <figure class="attachment">
+      <img [attr.src]="feedItem.publication.attachment_picture" alt="">
+      <figcaption *ngIf="feedItem.publication.attachment_title">
+        <p class="attachment-title" [innerHTML]="feedItem.publication.attachment_title"></p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
